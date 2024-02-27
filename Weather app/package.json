@@ -4,12 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "env-cmd -f ./dev.env nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "postman-request": "^2.88.1-postman.33"
+    "app": "^0.1.0",
+    "env": "^0.0.2",
+    "env-cmd": "^10.1.0",
+    "postman-request": "^2.88.1-postman.33",
+    "weather": "^1.0.4"
   }
 }
