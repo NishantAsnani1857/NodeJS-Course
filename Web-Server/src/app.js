@@ -66,6 +66,27 @@ app.get("/weather", (req, res) => {
   }
 });
 
+app.get('/myWeather',(req,res)=>{
+  if(!req.query.lat || !req.query.long){
+    res.json({ error: "Please enter your address" });
+  }
+  else{
+    getWeather(req.query.lat, req.query.long, (error, { data }) => {
+      if (error) {
+        return console.log(error);
+      } else {
+        res.json({
+          city: data.location.name,
+          region: data.location.region,
+          country: data.location.country,
+          current_temp: data.current.temp_c,
+          forecast_temp: data.forecast.forecastday[0].day.avgtemp_c,
+        });
+      }
+    })
+  }
+})
+
 app.get("/help/*", (req, res) => {
   const obj = {
     title: 404,
